@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right">
+        <i class="fa fa-bullhorn" (click)="displayList()"></i>
+      </div>
+      <div class="panel-title">Upcoming News</div>
+    </div>
+    <div class="list-group" *ngFor="let a of marticles| slice:0:4" >    
+      <a href={{a.url}} class="list-group-item"  target="_blank">
+        <div class="media">
+          <div class="media-body">
+            <small class="pull-right">{{a.publishedAt}}</small><br>
+            <strong class="media-heading text-primary">{{a.title}}</strong>
+            <p>
+              <small  style="color:cornflowerblue">{{a.source.name}}</small>
+            </p>
+            <p class="mb-sm">
+              <small>{{a.description}}</small>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div> 
+    
+    <div class="panel-footer clearfix">
+      <a href="#" class="pull-left">
+        <small>Read All</small>
+      </a>
+      <a href="#" class="pull-right">
+        <small>Dismiss All</small>
+      </a>
+    </div>
+    <div class="panel-footer clearfix">
+      <p>Upcoming News</p>
+    </div>
+  </div>

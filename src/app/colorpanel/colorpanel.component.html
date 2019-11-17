@@ -1,0 +1,141 @@
+<div class="row" *ngFor="let n of nifty | slice:0:1">
+    <div class="col-lg-3 col-sm-6">
+      <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="100" class="panel widget">
+        <div class="panel-body bg-primary">
+          <div class="row row-table row-flush">
+              <div class="col-xs-12">
+                  <h4 class="m0">{{n.index}}</h4>
+                  <p class="mb0">OPEN   
+                      <em class="fa fa-money"></em>
+                    </p>
+                  <span class="f-left m-t-10">
+                    <i class="far fa-money-bill-alt"></i> {{n.open}}
+                  </span>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="500" class="panel widget">
+        <div class="panel-body bg-warning">
+          <div class="row row-table row-flush">
+              <div class="col-xs-12">
+                  <h4 class="m0">{{n.index}}</h4>
+                  <p class="mb0">CLOSE
+                      <em class="fa fa-money"></em>
+                    </p>
+                  <span class="f-left m-t-10">
+                    <i class="far fa-money-bill-alt"></i> {{n.close}}
+                  </span>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="1000" class="panel widget">
+        <div class="panel-body bg-danger">
+          <div class="row row-table row-flush">
+              <div class="col-xs-12">
+                  <h4 class="m0">{{ n.index }}</h4>
+                  <p class="mb0">LOW
+                      <em class="fa fa-money"></em>
+                    </p>
+                  <span class="f-left m-t-10">
+                    <i class="far fa-money-bill-alt"></i> {{n.low}}
+                  </span>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="1500" class="panel widget">
+        <div class="panel-body bg-success">
+          <div class="row row-table row-flush">
+            <div class="col-xs-12">
+              <h4 class="m0">{{ n.index }}</h4>
+              <p class="mb0">HIGH
+                  <em class="fa fa-money"></em>
+                </p>
+              <span class="f-left m-t-10">
+              <i class="far fa-money-bill-alt"></i> {{ n.high }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let bn of banknifty | slice:0:1">
+      <div class="col-lg-3 col-sm-6">
+          <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="100" class="panel widget">
+            <div class="panel-body bg-primary">
+              <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                      <h4 class="m0">{{bn.SYMBOL}}</h4>
+                      <p class="mb0">OPEN   
+                          <em class="fa fa-money"></em>
+                        </p>
+                      <span class="f-left m-t-10">
+                        <i class="far fa-money-bill-alt"></i> {{bn.OPEN}}
+                      </span>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="500" class="panel widget">
+            <div class="panel-body bg-warning">
+              <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                      <h4 class="m0">{{bn.SYMBOL}}</h4>
+                      <p class="mb0">CLOSE
+                          <em class="fa fa-money"></em>
+                        </p>
+                      <span class="f-left m-t-10">
+                        <i class="far fa-money-bill-alt"></i> {{bn.CLOSE}}
+                      </span>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="1000" class="panel widget">
+            <div class="panel-body bg-danger">
+              <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                      <h4 class="m0">{{ bn.SYMBOL }}</h4>
+                      <p class="mb0">LOW
+                          <em class="fa fa-money"></em>
+                        </p>
+                      <span class="f-left m-t-10">
+                        <i class="far fa-money-bill-alt"></i> {{bn.LOW}}
+                      </span>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="1500" class="panel widget">
+            <div class="panel-body bg-success">
+              <div class="row row-table row-flush">
+                <div class="col-xs-12">
+                  <h4 class="m0">{{ bn.SYMBOL }}</h4>
+                  <p class="mb0">HIGH
+                      <em class="fa fa-money"></em>
+                    </p>
+                  <span class="f-left m-t-10">
+                  <i class="far fa-money-bill-alt"></i> {{ bn.HIGH }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  

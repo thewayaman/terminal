@@ -1,0 +1,59 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+  <section class="wrapper">
+    <app-navbartop></app-navbartop>
+    <aside class="aside asideBuySell">
+      <app-aside></app-aside>
+    </aside>
+
+    <section>
+
+      <section class="main-content">
+        <button type="button" class="btn btn-labeled btn-primary pull-right">
+          <span class="btn-label">
+            <i class="fas fa-piggy-bank"></i>
+            
+          </span>Goto Wallet</button>
+        <h3>Dashboard
+        </h3>
+        <!-- Row 1 starts here -->
+        <div class="row">
+          <div class="col-md-9">
+            <!-- First Row Starts Here -->
+            <!--Color panel starts here-->
+            <app-colorpanel></app-colorpanel>
+            <!--Color panels end here-->
+            <!-- First Row Ends Here -->
+            <!--Market starts here-->
+            <app-allmarkets></app-allmarkets>
+            <!--Market ends here-->
+            <!-- Chart Starts Here -->
+            <app-portal></app-portal>
+            <!-- Chart Ends Here -->
+            <!-- Bid/Ask starts here-->
+            <app-spread></app-spread>
+            <!--Bid/Ask ends here-->
+          </div>
+          <div class="col-md-3">
+            <!--Upcoming news begins here-->
+            <app-news></app-news>
+            <!--Upcoming news ends here-->
+          </div>
+        </div>
+        <!-- Row 1 ends here -->
+        <!-- Row 2 starts here -->
+        <div class="row">
+          <!-- Watchlist -->
+          <app-watchlist></app-watchlist>
+          <!-- Open Orders -->
+          <!-- <app-openorders></app-openorders> -->
+          <app-route1></app-route1>
+          <!-- Market History -->
+          <app-markethistory></app-markethistory>
+          <!-- Chart -->
+          <app-route3></app-route3>
+        </div>
+        <!-- Row 2 ends here-->
+      </section>
+      
+

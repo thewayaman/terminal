@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Terminal</title>
+  <base href="/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta content="Responsive Bootstrap Multi-Purpose Crypto Trading User Interface" name="description" />
+  <meta name="keywords" content="crypto, Bootstrap, bitcoins, ethereum, dogecoin, iota, ripple, siacoin, exchange, trading platform, crypto trading">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="https://xbootstrap.com/demo/crypto/cryptoapp/app/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/animo/animate+animo.css">
+  <link rel="stylesheet" href="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/csspinner/csspinner.min.css">
+  <link rel="stylesheet" href="https://xbootstrap.com/demo/crypto/cryptoapp/app/css/app.css">
+  <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/modernizr/modernizr.js"></script>
+  <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/fastclick/fastclick.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
+
+  <!--  Amcharts import starts-->
+  <!-- <link rel="stylesheet" href="../amcharts/style.css" type="text/css">
+  <script src="../amcharts/amcharts.js" type="text/javascript"></script>
+  <script src="../amcharts/serial.js" type="text/javascript"></script>
+  <script src="../amcharts/amstock.js" type="text/javascript"></script> -->
+  <link rel="stylesheet" href="./assets/amcharts/style.css" type="text/css">
+  <script src="./assets/amcharts/amcharts.js" type="text/javascript"></script>
+  <script src="./assets/amcharts/serial.js" type="text/javascript"></script>
+  <script src="./assets/amcharts/amstock.js" type="text/javascript"></script>
+  
+
+  <script>
+var chartData = [];
+			generateChartData();
+
+
+			function generateChartData() {
+				var firstDate = new Date();
+				firstDate.setHours(0, 0, 0, 0);
+				firstDate.setDate(firstDate.getDate() - 2000);
+
+				for (var i = 0; i < 2000; i++) {
+					var newDate = new Date(firstDate);
+
+					newDate.setDate(newDate.getDate() + i);
+
+					var open = Math.round(Math.random() * (30) + 100);
+					var close = open + Math.round(Math.random() * (15) - Math.random() * 10);
+
+					var low;
+					if (open < close) {
+						low = open - Math.round(Math.random() * 5);
+					} else {
+						low = close - Math.round(Math.random() * 5);
+					}
+
+					var high;
+					if (open < close) {
+						high = close + Math.round(Math.random() * 5);
+					} else {
+						high = open + Math.round(Math.random() * 5);
+					}
+
+					var volume = Math.round(Math.random() * (1000 + i)) + 100 + i;
+
+					var value = Math.round(Math.random() * (30) + 100);
+
+					chartData[i] = ({
+						date: newDate,
+						open: open,
+						close: close,
+						high: high,
+						low: low,
+						volume: volume,
+						value: value
+					});
+				}
+			}
+
+			AmCharts.makeChart("chartdiv", {
+				type: "stock",
+
+				dataSets: [{
+					fieldMappings: [{
+						fromField: "open",
+						toField: "open"
+					}, {
+						fromField: "close",
+						toField: "close"
+					}, {
+						fromField: "high",
+						toField: "high"
+					}, {
+						fromField: "low",
+						toField: "low"
+					}, {
+						fromField: "volume",
+						toField: "volume"
+					}, {
+						fromField: "value",
+						toField: "value"
+					}],
+
+					color: "#7f8da9",
+					dataProvider: chartData,
+					title: "West Stock",
+					categoryField: "date"
+				}, {
+					fieldMappings: [{
+						fromField: "value",
+						toField: "value"
+					}],
+					color: "#fac314",
+					dataProvider: chartData,
+					compared: true,
+					title: "East Stock",
+					categoryField: "date"
+				}],
+
+
+				panels: [{
+						title: "Value",
+						showCategoryAxis: false,
+						percentHeight: 70,
+						valueAxes: [{
+							id:"v1",
+							dashLength: 5
+						}],
+
+						categoryAxis: {
+							dashLength: 5
+						},
+
+						stockGraphs: [{
+							type: "candlestick",
+							id: "g1",
+							openField: "open",
+							closeField: "close",
+							highField: "high",
+							lowField: "low",
+							valueField: "close",
+							lineColor: "#7f8da9",
+							fillColors: "#7f8da9",
+							negativeLineColor: "#db4c3c",
+							negativeFillColors: "#db4c3c",
+							fillAlphas: 1,
+							useDataSetColors: false,
+							comparable: true,
+							compareField: "value",
+							showBalloon: false
+						}],
+
+						stockLegend: {
+							valueTextRegular: undefined,
+							periodValueTextComparing: "[[percents.value.close]]%"
+						}
+					},
+
+					{
+						title: "Volume",
+						percentHeight: 30,
+						marginTop: 1,
+						showCategoryAxis: true,
+						valueAxes: [{
+							id:"v2",
+							dashLength: 5
+						}],
+
+						categoryAxis: {
+							dashLength: 5
+						},
+
+						stockGraphs: [{
+							valueField: "volume",
+							type: "column",
+							showBalloon: false,
+							fillAlphas: 1
+						}],
+
+						stockLegend: {
+							markerType: "none",
+							markerSize: 0,
+							labelText: "",
+							periodValueTextRegular: "[[value.close]]"
+						}
+					}
+				],
+
+				chartCursorSettings: {
+					valueLineEnabled:true,
+					valueLineBalloonEnabled:true
+				},
+
+
+				chartScrollbarSettings: {
+					graph: "g1",
+					graphType: "line",
+					usePeriod: "WW",
+					updateOnReleaseOnly:false
+				},
+
+				periodSelector: {
+					position: "bottom",
+					periods: [{
+						period: "DD",
+						count: 10,
+						label: "10 days"
+					}, {
+						period: "MM",
+						selected: true,
+						count: 1,
+						label: "1 month"
+					}, {
+						period: "YYYY",
+						count: 1,
+						label: "1 year"
+					}, {
+						period: "YTD",
+						label: "YTD"
+					}, {
+						period: "MAX",
+						label: "MAX"
+					}]
+				}
+			});
+  </script>
+
+  <!-- Amcharts import ends -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+<script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/jquery/jquery.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/bootstrap/js/bootstrap.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/chosen/chosen.jquery.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/velocity/velocity.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/velocity/velocity.ui.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/slider/js/bootstrap-slider.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/filestyle/bootstrap-filestyle.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/animo/animo.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/sparklines/jquery.sparkline.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/slimscroll/jquery.slimscroll.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/datatable/media/js/jquery.dataTables.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/datatable/extensions/datatable-bootstrap/js/dataTables.bootstrap.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/datatable/extensions/datatable-bootstrap/js/dataTables.bootstrapPagination.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/datatable/extensions/ColVis/js/dataTables.colVis.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/tradify/highcharts.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/tradify/exporting.js"></script>
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/plugins/datatable/extensions/ColVis/js/dataTables.colVis.js"></script>
+      <!--[if lt IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+      <script src="https://xbootstrap.com/demo/crypto/cryptoapp/app/js/tradify.js"></script>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+

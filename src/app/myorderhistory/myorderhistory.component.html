@@ -1,0 +1,64 @@
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">My Order History
+      <a href="#" data-perform="panel-collapse" data-toggle="tooltip" title="Collapse Panel" class="pull-right">
+        <em class="fa fa-minus"></em>
+      </a>
+    </div>
+    <!-- Header starts -->
+    <!-- Table begins -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr (click)="sort('symbol')">
+            <th>Date<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('date')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Symbol<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('symbol')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Type<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('type')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Quantity<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('quantity')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Price<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('Price')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Cost/Proceeds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | orderBy:key1:reverse | paginate :{itemsPerPage:6,currentPage:p }| filter:filter ; let i =index">
+
+            <td>
+              {{ order.date }}
+            </td>
+            <td>{{ order.symbol }}</td>
+            <td>{{ order.type }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.price*order.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Footer begins -->
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="input-group">
+            <input type="text" placeholder="Search" class="input-sm form-control" [(ngModel)]="filter">
+          </div>
+        </div>
+        <div class="col-lg-8"></div>
+        <div class="col-lg-12">
+          <div class="float-right">
+            <pagination-controls (pageChange)="p=$event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

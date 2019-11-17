@@ -1,0 +1,26 @@
+  <div class="row" *ngFor="let order of orders | slice:0:2">
+      <div class="col-md-6">
+         <div data-toggle="play-animation"  data-play="fadeInLeft" data-offset="0" data-delay="1400" class="panel widget">
+            <div class="panel-body">
+               <div class="text-right text-muted">
+                  <em class="fa fa-gavel fa-2x text-danger"></em>
+               </div>
+               <h3 class="mt0">Bid Price: {{order.symbol}}</h3>
+               <p class="text-danger"><i class="far fa-money-bill-alt"></i> {{order.quantity + 36}}</p>
+               <p><i class="fas fa-rupee-sign"></i> {{order.price + 3.6}}</p>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6" >
+         <div data-toggle="play-animation" data-play="fadeInLeft" data-offset="0" data-delay="1400" class="panel widget">
+            <div class="panel-body">
+               <div class="text-right text-muted">
+                  <em class="fa fa-bullhorn fa-2x text-green"></em>
+               </div>
+               <h3 class="mt0">Ask Price: {{order.symbol}}</h3>
+               <p class="text-green"><i class="far fa-money-bill-alt"></i>{{order.quantity - 26}}</p>
+               <p><i class="fas fa-rupee-sign"></i>  {{order.price + 8.9}}</p>
+            </div>
+         </div>
+      </div>
+   </div>

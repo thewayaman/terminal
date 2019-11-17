@@ -1,0 +1,150 @@
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <!-- Panel Heading Begins Here -->
+    <div class="panel-heading">Watchlist
+      <a href="javascript:void(0);" data-perform="panel-collapse" data-toggle="tooltip" title="" class="pull-right"
+        data-original-title="Collapse Panel">
+        <em class="fa fa-minus"></em>
+      </a>
+    </div>
+    <!-- Panel Heading Ends Here -->
+
+    <!-- Body Panel Begins Here -->
+    <div class="panel-body">
+      <div class="row">
+        <!-- Nifty Table Begins Here -->
+        <div class="col-md-6 col-sm-12">
+          <div class="table-responsive m-t-10">
+            <table class="table table-striped table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th>Nifty
+                    <i class="fa fa-caret-down"></i>
+                  </th>
+                  <th>
+                    Date<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('date')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    Time<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('time')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    Open<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('open')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    Close<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('close')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    <i class="fa fa-star"></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let n of nifty | orderBy:key1:reverse | paginate :{itemsPerPage:10,currentPage:p }| filter:filter ; let i =index">
+                  <td class="p0">
+                    <button type="button" class="btn btn-primary btn-xs center-block">
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                  </td>
+                  <td class="number">{{n.date}}</td>
+                  <td class="number">{{ n.time}}</td>
+                  <td class="number cursor-pointer">{{n.open}}</td>
+                  <td class="number cursor-pointer">{{n.close}}</td>
+                  <td class="symbol">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <table class="w-100-p">
+            <tbody>
+              <tr>
+                <td class="w-50-p">
+                  &nbsp;
+                </td>
+                <td class="w-50-p text-right">
+                  &nbsp;
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Pagiantion Begins Here (Footer) -->
+          <div class="float-right">
+            <pagination-controls class="pagination pagination-sm pagi-margin" (pageChange)="p=$event"></pagination-controls>
+
+          </div>
+        </div>
+        <!-- Nifty Table Ends Here -->
+        <!-- BankNifty Ends Here -->
+        <div class="col-md-6 col-sm-12">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="table-responsive m-t-10">
+            <table class="table table-striped table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th>Bank nifty
+                    <i class="fa fa-caret-down"></i>
+                  </th>
+                  <th>
+                    Date<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('date')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    Time<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('time')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    Open<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('open')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    Close<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('close')"><i
+                          class="fas fa-sort"></i></button> </div>
+                  </th>
+                  <th>
+                    <i class="fa fa-star"></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let bn of banknifty | orderBy:key1:reverse | paginate :{itemsPerPage:10,currentPage:p }| filter:filter ; let i =index">
+                  <td class="p0">
+                    <button type="button" class="btn btn-primary btn-xs center-block">
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                  </td>
+                  <td class="number">{{bn.TIMESTAMP}}</td>
+                  <td class="number">{{ bn.TIME }}</td>
+                  <td class="number cursor-pointer">{{bn.OPEN}}</td>
+                  <td class="number cursor-pointer">{{bn.CLOSE}}</td>
+                  <td class="symbol">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <table class="w-100-p">
+            <tbody>
+              <tr>
+                <td class="w-50-p">
+                  &nbsp;
+                </td>
+                <td class="w-50-p text-right">
+                  &nbsp;
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="float-right">
+            <pagination-controls class="pagination pagination-sm pagi-margin" (pageChange)="p=$event"></pagination-controls>
+          </div>
+          <!-- BankNifty Ends Here -->
+        </div>
+      </div>
+      <!-- Body Panel Ends Here -->
+    </div>
+  </div>

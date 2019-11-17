@@ -1,0 +1,209 @@
+<nav class="sidebar">
+
+  <ul class="nav">
+    <li>
+      <div class="item user-block has-submenu">
+        <div class="user-block-picture">
+          <img src="https://xbootstrap.com/demo/crypto/cryptoapp/app/img/user/02.jpg" alt="Avatar" width="60" height="60"
+            class="img-thumbnail img-circle account-img-mb">
+        </div>
+        <div class="user-block-info">
+          <span class="user-block-name item-text">James Franky</span>
+          <span class="user-block-role">
+            <i class="fa fa-check text-green"></i> Verified</span>
+          <div class="label label-primary">
+            <i class="fa fa-lock"></i> Logout</div>
+        </div>
+      </div>
+    </li>
+    <li class="">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Tabs-->
+
+          <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs" id="formSection">
+            <ul id="myTabs" class="nav nav-tabs nav-tabs-noboder minus-margin-tab" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#home" class="tab-link-pad" id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+                  aria-expanded="true">
+                  <i class="fa fa-gavel"></i> Buy</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#profile" class="tab-link-pad" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile"
+                  aria-expanded="false">
+                  <i class="fa fa-bullhorn"></i> Sell</a>
+              </li>
+            </ul>
+            <!-- Form begins here -->
+            <form ngNativeValidate> 
+              <div id="myTabContent" class="tab-content tab-content-BuySell">
+                <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+                  <div class="">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-wrapper collapse in h-auto">
+                      <div class="pannel panel-body">
+                        <div class="input-group col-sm-12 m-b">
+                          <span class="input-group-addon btn-primary group-btn-hover darkformfield">
+                            <i class="fa fa-angle-double-up"></i> Stock</span>
+                          <input type="text" required placeholder="SYMBOL" required class="form-control text-right"
+                            (click)="orderRecord.type='Buy'" id="symbol" name="symbol" [(ngModel)]="orderRecord.symbol"
+                            required>
+                        </div>
+                        <div class="m-t-9">
+                          <div class="input-group m-b">
+                            <div class="input-group-btn">
+                              <button type="button" data-toggle="dropdown" class="btn btn-primary form-btn-padding dropdown-toggle">Quantity
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="javascript:void(0);">Bid</a>
+                                </li>
+                                <li>
+                                  <a href="javascript:void(0);">Ask</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <input type="number" class="form-control text-right" required placeholder="40" id="quantity"
+                              name="quantity" [(ngModel)]="orderRecord.quantity">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="btn-group m-t-9 col-md-12 col-sm-12 col-xs-12">
+                            <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-block">Limit
+                              <span class="caret"></span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                              <li>
+                                <a href="javascript:void(0);">Limit</a>
+                              </li>
+                              <li>
+                                <a href="javascript:void(0);">Conditional</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="btn-group m-t-9 col-md-12 col-sm-12 col-xs-12">
+                            <button type="button" data-toggle="dropdown" class="btn btn-danger dropdown-toggle btn-block">Good
+                              'Till Cancelled
+                              <span class="caret"></span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                              <li>
+                                <a href="javascript:void(0);">Good 'Till Cancelled</a>
+                              </li>
+                              <li>
+                                <a href="javascript:void(0);">Immediate or Cancel</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="m-t-9">
+                          <div class="input-group col-sm-12 m-b">
+                            <span class="input-group-addon">
+                              <i class="fas fa-rupee-sign"></i>
+                            </span>
+                            <input type="number" required placeholder="0.0" class="form-control text-right" id="price"
+                              name="price" [(ngModel)]="orderRecord.price">
+                          </div>
+                        </div>
+                        <div class="m-t-9">
+                          <input type="hidden" class="form-control" required id="type" name="type" value="Buy"
+                            [(ngModel)]="orderRecord.type">
+                          <button type="button" class="btn btn-primary btn-block" id="btnSave" (click)="add()">
+                            <i class="fa fa-plus"></i> Buy </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+                  <div class="">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-wrapper collapse in h-auto">
+                      <div class="pannel panel-body">
+                        <div class="input-group col-sm-12 m-b">
+                          <span class="input-group-addon btn-primary group-btn-hover darkformfield">
+                            <i class="fa fa-angle-double-up"></i> Stock</span>
+                          <input type="text" required placeholder="SYMBOL" class="form-control text-right" (click)="orderRecord.type='Sell'"
+                            id="symbol" name="test" [(ngModel)]="orderRecord.symbol">
+                        </div>
+                        <div class="m-t-9">
+                          <div class="input-group m-b">
+                            <div class="input-group-btn">
+                              <button type="button" data-toggle="dropdown" class="btn btn-primary form-btn-padding dropdown-toggle">Quantity
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="javascript:void(0);">Bid</a>
+                                </li>
+                                <li>
+                                  <a href="javascript:void(0);">Ask</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <input type="number" class="form-control text-right" required placeholder="40" id="quantity"
+                              name="quantity" [(ngModel)]="orderRecord.quantity">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="btn-group m-t-9 col-md-12 col-sm-12 col-xs-12">
+                            <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-block">Limit
+                              <span class="caret"></span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                              <li>
+                                <a href="javascript:void(0);">Limit</a>
+                              </li>
+                              <li>
+                                <a href="javascript:void(0);">Conditional</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="btn-group m-t-9 col-md-12 col-sm-12 col-xs-12">
+                            <button type="button" data-toggle="dropdown" class="btn btn-danger dropdown-toggle btn-block">Good
+                              'Till Cancelled
+                              <span class="caret"></span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                              <li>
+                                <a href="javascript:void(0);">Good 'Till Cancelled</a>
+                              </li>
+                              <li>
+                                <a href="javascript:void(0);">Immediate or Cancel</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="m-t-9">
+                          <div class="input-group col-sm-12 m-b">
+                            <span class="input-group-addon">
+                              <i class="fas fa-rupee-sign"></i>
+                            </span>
+                            <input type="number" required placeholder="0.0" class="form-control text-right" id="price"
+                              name="price" [(ngModel)]="orderRecord.price">
+                          </div>
+                        </div>
+
+                        <div class="m-t-9">
+                          <input type="hidden" class="form-control" id="type" name="type" placeholder="sell"
+                            [(ngModel)]="orderRecord.type">
+                          <button type="button" class="btn btn-primary btn-block" id="btnSave" (click)="add()">
+                            <i class="fa fa-minus"></i> Sell </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- Form ends here -->
+          </div>
+
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,76 @@
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Market History
+      <a href="#" data-perform="panel-collapse" data-toggle="tooltip" title="Collapse Panel" class="pull-right">
+        <em class="fa fa-minus"></em>
+      </a>
+    </div>
+    <!-- Header ends -->
+    <!-- Table body starts -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>
+              SYMBOL
+              <div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('SYMBOL')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Date<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('DATE')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Series<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('SERIES')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Open<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('OPEN')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Close<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('CLOSE')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>High<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('HIGH')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+            <th>Low<div class="float-right"><button type="button" class="btn btn-sm btn-default" (click)="sort('LOW')"><i
+                    class="fas fa-sort"></i></button> </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of stocks | orderBy:key1:reverse | paginate :{itemsPerPage:6,currentPage:p }| filter:filter ; let i =index">
+            <td class="text-green">{{stock.SYMBOL}}
+              <i class="fa fa-arrow-up"></i>
+            </td>
+            <td>
+              {{ stock.TIMESTAMP }}
+            </td>
+            <td>{{stock.SERIES}}</td>
+            <td>{{stock.OPEN}}</td>
+            <td>{{stock.CLOSE}}</td>
+            <td>{{stock.HIGH}}</td>
+            <td>{{stock.LOW}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Footer begins -->
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="input-group">
+            <!-- Search box  -->
+            <input type="text" placeholder="Search" class="input-sm form-control" [(ngModel)]="filter">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-sm btn-default">Search</button>
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-8"></div>
+        <div class="col-lg-2">
+          <div class="float-right">
+            <!-- Pagination -->
+            <pagination-controls class="pagination pagination-sm pagi-margin" (pageChange)="p=$event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>

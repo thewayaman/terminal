@@ -1,0 +1,88 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Recent Orders
+        <a href="#" data-perform="panel-collapse" data-toggle="tooltip" title="Collapse Panel" class="pull-right">
+          <em class="fa fa-minus"></em>
+        </a>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <!-- <thead>
+            <tr>
+              <th>
+                <i class="fa fa-plus"></i>
+              </th>
+              <th>Order Date</th>
+              <th>Type</th>
+              <th>Bid/Ask</th>
+              <th>Units Filled SC</th>
+              <th>Units Total SC</th>
+              <th>Actual Rate</th>
+              <th>Estimated Total BTC</th>
+              <th>
+                <i class="fas fa-times-circle"></i>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <i class="fa fa-minus"></i>
+              </td>
+              <td>
+                02/18/2018 05:36:12 PM
+              </td>
+              <td>Limit Sell</td>
+              <td>0.00000305</td>
+              <td>0.00000000</td>
+              <td>26089.00161498</td>
+              <td>
+                0.00000000
+              </td>
+              <td>0.07937253</td>
+              <td>
+                <i class="far fa-times btn btn-danger"></i>
+              </td>
+            </tr>
+          </tbody> -->
+        <thead>
+        <tr (click)="sort('symbol')">
+            <th>Date</th>
+            <th>Symbol</th>
+            <th>Type</th>            
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Cost/Proceeds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | orderBy:key:reverse | paginate :{itemsPerPage:6,currentPage:p }| filter:filter ; let i =index">
+            <td>
+             {{ order.date }}
+            </td>
+            <td>{{ order.symbol }}</td>
+            <td>{{ order.type }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.price*order.quantity }}</td>
+            </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="input-group">
+              <input type="text" placeholder="Search" class="input-sm form-control" [(ngModel)]="filter">
+            </div>
+          </div>
+          <div class="col-lg-8"></div>
+          <div class="col-lg-2">
+            <div class="input-group pull-right">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
