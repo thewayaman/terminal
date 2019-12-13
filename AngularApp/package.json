@@ -28,7 +28,7 @@
     "ng2-search-filter": "^0.4.7",
     "ngx-order-pipe": "^2.0.1",
     "ngx-pagination": "^3.2.1",
-    "npm": "^6.4.1",
+    "npm": "^6.13.4",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
